@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+vector<string> listFromString(string);
 int main()
 {
     string input;
@@ -22,5 +22,28 @@ int main()
     }
 
     return 0;
+}
+vector<string> listFromString(string input)
+{
+    vector<string> list;
+    string word = "";
+    int numWords = 0;
+    for(int index = 0; index<input.length(); index++)
+    {
+        if(input[index] == ',')
+        {
+            numWords++;
+        }
+    }
+
+    for(int index = 0; index<numWords+1; index++)
+    {
+        word = input.substr(0, input.find(","));
+        input.erase(0, word.length()+1);    
+        //index += word.length();
+        list.push_back(word);
+    }
+    return list;
+
 }
            
